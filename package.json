@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "babel src -d build -w --source-maps",
     "start": "node build/app.js",
-    "test": "jasmine"
+    "test": "nodemon ./node_modules/jasmine/bin/jasmine.js"
   },
   "repository": "Hamled/js-scrabble",
   "license": "MIT",

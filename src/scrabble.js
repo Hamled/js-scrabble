@@ -16,6 +16,10 @@ Scrabble.LETTER_SCORES = {
 
 // Static functions
 Scrabble.score = function(word) {
+  if(word === undefined) {
+    return word;
+  }
+
   return _.sum(_.map(word, function(letter) {
     const score = _.find(Scrabble.LETTER_SCORES, function(score, letters) {
       return letters.includes(letter.toLowerCase());

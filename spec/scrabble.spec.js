@@ -22,7 +22,13 @@ describe('Scrabble', function() {
 
   describe('.score', function() {
     it('can be called', function() {
-      Scrabble.score();
+      expect(function() {
+        Scrabble.score();
+      }).not.toThrow();
+    });
+
+    it('returns undefined for empty arguments', function() {
+      expect(Scrabble.score()).toBeUndefined();
     });
 
     it('returns zero for empty string', function() {

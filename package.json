@@ -1,0 +1,16 @@
+{
+  "name": "js-scrabble",
+  "version": "1.0.0",
+  "description": "An ES6 JavaScript implementation of AdaGold/js-scrabble",
+  "author": "Charles Ellis <hamled@hamled.name>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "Hamled/js-scrabble",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hamled/js-scrabble/issues"
+  },
+  "homepage": "https://github.com/Hamled/js-scrabble#readme"
+}

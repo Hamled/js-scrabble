@@ -25,6 +25,10 @@ describe('Scrabble', function() {
       Scrabble.score();
     });
 
+    it('returns zero for empty string', function() {
+      expect(Scrabble.score('')).toEqual(0);
+    });
+
     it('returns correct score for each letter', function() {
       _.each(Scrabble.LETTER_SCORES, function(score, letters) {
         _.each(letters, function(letter) {

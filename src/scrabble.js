@@ -17,9 +17,15 @@ Scrabble.LETTER_SCORES = {
 // Static functions
 Scrabble.score = function(word) {
   return _.sum(_.map(word, function(letter) {
-    return _.find(Scrabble.LETTER_SCORES, function(score, letters) {
+    const score = _.find(Scrabble.LETTER_SCORES, function(score, letters) {
       return letters.includes(letter.toLowerCase());
     });
+
+    if(score === undefined) {
+      throw new Error(`'${letter}' is not a valid Scrabble letter`);
+    }
+
+    return score;
   }));
 };
 

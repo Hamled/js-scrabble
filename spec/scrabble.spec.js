@@ -55,5 +55,18 @@ describe('Scrabble', function() {
       expect(lowerCaseScore).toEqual(mixedCaseScore);
       expect(lowerCaseScore).toEqual(upperCaseScore);
     });
+
+    it('throws an Error when given non-letter characters', function() {
+      var nonLetterChars = '1234567890!@#$%^&*()-=_+,.<>;\':"?/\\[]{}|`~';
+      _.each(nonLetterChars, function(char) {
+        expect(function() {
+          return Scrabble.score(char);
+        }).toThrowError(Error, `'${char}' is not a valid Scrabble letter`);
+      });
+
+      expect(function() {
+        return Scrabble.score('multiple words');
+      }).toThrowError(Error, `' ' is not a valid Scrabble letter`);
+    });
   });
 });

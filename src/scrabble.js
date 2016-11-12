@@ -18,7 +18,7 @@ Scrabble.LETTER_SCORES = {
 Scrabble.score = function(word) {
   return _.sum(_.map(word, function(letter) {
     return _.find(Scrabble.LETTER_SCORES, function(score, letters) {
-      return letters.includes(letter);
+      return letters.includes(letter.toLowerCase());
     });
   }));
 };

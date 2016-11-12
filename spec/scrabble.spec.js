@@ -46,5 +46,14 @@ describe('Scrabble', function() {
 
       expect(scoreByWord).toEqual(scoreByLetters);
     });
+
+    it('is case insensitive', function() {
+      var lowerCaseScore = Scrabble.score('aperture');
+      var mixedCaseScore = Scrabble.score('ApeRtUrE');
+      var upperCaseScore = Scrabble.score('APERTURE');
+
+      expect(lowerCaseScore).toEqual(mixedCaseScore);
+      expect(lowerCaseScore).toEqual(upperCaseScore);
+    });
   });
 });

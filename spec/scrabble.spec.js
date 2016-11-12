@@ -32,5 +32,15 @@ describe('Scrabble', function() {
         });
       });
     });
+
+    it('returns correct score for multi-letter words', function() {
+      var word = 'abstruse';
+      var scoreByLetters = _.sum(_.map(word, function(letter) {
+        return Scrabble.score(letter);
+      }));
+      var scoreByWord = Scrabble.score(word);
+
+      expect(scoreByWord).toEqual(scoreByLetters);
+    });
   });
 });

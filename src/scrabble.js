@@ -15,10 +15,12 @@ Scrabble.LETTER_SCORES = {
 };
 
 // Static functions
-Scrabble.score = function(letter) {
-  return _.find(Scrabble.LETTER_SCORES, function(score, letters) {
-    return letters.includes(letter);
-  });
+Scrabble.score = function(word) {
+  return _.sum(_.map(word, function(letter) {
+    return _.find(Scrabble.LETTER_SCORES, function(score, letters) {
+      return letters.includes(letter);
+    });
+  }));
 };
 
 export default Scrabble;

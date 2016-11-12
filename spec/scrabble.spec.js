@@ -44,7 +44,7 @@ describe('Scrabble', function() {
     });
 
     it('returns correct score for multi-letter words', function() {
-      var word = 'abstruse';
+      var word = 'absurd';
       var scoreByLetters = _.sum(_.map(word, function(letter) {
         return Scrabble.score(letter);
       }));
@@ -73,6 +73,15 @@ describe('Scrabble', function() {
       expect(function() {
         return Scrabble.score('multiple words');
       }).toThrowError(Error, `' ' is not a valid Scrabble letter`);
+    });
+
+    it('increases score by 50 for words greater than six letters', function() {
+      var word = 'madden';
+      var wordScore = Scrabble.score(word);
+      var suffix = 's';
+      var suffixScore = Scrabble.score(suffix);
+
+      expect(Scrabble.score(word + suffix)).toEqual(wordScore + suffixScore + 50);
     });
   });
 });

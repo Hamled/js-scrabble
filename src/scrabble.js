@@ -20,7 +20,7 @@ Scrabble.score = function(word) {
     return word;
   }
 
-  return _.sum(_.map(word, function(letter) {
+  const wordScore = _.sum(_.map(word, function(letter) {
     const score = _.find(Scrabble.LETTER_SCORES, function(score, letters) {
       return letters.includes(letter.toLowerCase());
     });
@@ -31,6 +31,12 @@ Scrabble.score = function(word) {
 
     return score;
   }));
+
+  if(word.length > 6) {
+    return wordScore + 50;
+  } else {
+    return wordScore;
+  }
 };
 
 export default Scrabble;

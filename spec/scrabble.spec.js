@@ -1,6 +1,25 @@
 import Scrabble from 'scrabble';
+import _ from 'lodash';
 
 describe('Scrabble', function() {
+  describe('.LETTER_SCORES', function() {
+    const getLetters = function(letterScores) {
+      return _.keys(letterScores).reduce(function(a, b) {
+        return a + b;
+      });
+    };
+
+    it('includes all letters', function() {
+      var allLetters = getLetters(Scrabble.LETTER_SCORES);
+      expect(allLetters.length).toEqual(26);
+    });
+
+    it('includes no duplicates', function() {
+      var allLetters = getLetters(Scrabble.LETTER_SCORES);
+      expect(_.join(_.uniq(allLetters), '')).toEqual(allLetters);
+    });
+  });
+
   describe('.score', function() {
     it('can be called', function() {
       Scrabble.score();

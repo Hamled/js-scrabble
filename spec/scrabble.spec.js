@@ -24,5 +24,13 @@ describe('Scrabble', function() {
     it('can be called', function() {
       Scrabble.score();
     });
+
+    it('returns correct score for each letter', function() {
+      _.each(Scrabble.LETTER_SCORES, function(score, letters) {
+        _.each(letters, function(letter) {
+          expect(Scrabble.score(letter)).toEqual(score);
+        });
+      });
+    });
   });
 });

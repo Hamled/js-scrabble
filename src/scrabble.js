@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // Constructor
 const Scrabble = function() {};
 
@@ -13,6 +15,10 @@ Scrabble.LETTER_SCORES = {
 };
 
 // Static functions
-Scrabble.score = function() {};
+Scrabble.score = function(letter) {
+  return _.find(Scrabble.LETTER_SCORES, function(score, letters) {
+    return letters.includes(letter);
+  });
+};
 
 export default Scrabble;

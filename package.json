@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "An ES6 JavaScript implementation of AdaGold/js-scrabble",
   "author": "Charles Ellis <hamled@hamled.name>",
-  "main": "index.js",
+  "main": "build/app.js",
   "scripts": {
+    "dev": "babel src -d build -w --source-maps",
+    "start": "node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "Hamled/js-scrabble",

@@ -29,4 +29,12 @@ describe('Player', function() {
       expect(player.plays).toBeEmptyArray();
     });
   });
+
+  describe('#play', function() {
+    it('can be called', function() {
+      var player = new Player('Player 1');
+
+      expect(player.play).toBeFunction();
+    });
+  });
 });

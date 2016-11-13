@@ -7,4 +7,7 @@ var Player = function(name) {
   this.plays = [];
 };
 
+Player.prototype.play = function(word) {
+};
+
 export default Player;

@@ -100,6 +100,18 @@ describe('Scrabble', function() {
       expect(Scrabble.highestScoreFrom([])).toBeUndefined();
     });
 
+    it('returns a word within given array of words', function() {
+      var words = [
+        'blimp',
+        'fixie',
+        'quart'
+      ];
+
+      var maxWord = Scrabble.highestScoreFrom(words);
+      expect(maxWord).toBeString();
+      expect(words).toContain(maxWord);
+    });
+
     it('returns highest scoring word when no ties', function() {
       var words = [
         'fruits',

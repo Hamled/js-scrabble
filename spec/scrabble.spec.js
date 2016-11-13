@@ -99,5 +99,24 @@ describe('Scrabble', function() {
     it('returns undefined for empty array', function() {
       expect(Scrabble.highestScoreFrom([])).toBeUndefined();
     });
+
+    it('returns highest scoring word when no ties', function() {
+      var words = [
+        'fruits',
+        'banana',
+        'orange',
+        'papaya'
+      ];
+      var scores = _.map(words, Scrabble.score);
+      var maxWord = _.maxBy(words, Scrabble.score);
+
+      // Sanity checks
+      expect(_.uniq(scores)).toEqual(scores); // above words all have different scores
+      expect(maxWord).not.toBeUndefined();
+
+      _.each([words, _.reverse(words)], function(words) {
+        expect(Scrabble.highestScoreFrom(words)).toEqual(maxWord);
+      });
+    });
   });
 });

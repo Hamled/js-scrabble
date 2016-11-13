@@ -43,6 +43,23 @@ Scrabble.highestScoreFrom = function(words) {
   if(!_.isArray(words)) {
     throw new Error('highestScoreFrom must be called with an array argument');
   }
+
+  const scoredWords = _.map(words, function(word) {
+    return {
+      word: word,
+      score: Scrabble.score(word)
+    };
+  });
+
+  var maxScoredWord = _.last(_.sortBy(scoredWords, function(scoredWord) {
+    return scoredWord.score;
+  }));
+
+  if(maxScoredWord !== undefined) {
+    return maxScoredWord.word;
+  } else {
+    return undefined;
+  }
 };
 
 export default Scrabble;

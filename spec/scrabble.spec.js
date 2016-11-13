@@ -139,8 +139,21 @@ describe('Scrabble', function() {
       var shortestWord = _.minBy(words, 'length');
 
       _.each([words, _.reverse(words)], function(words) {
-
         expect(Scrabble.highestScoreFrom(words)).toEqual(shortestWord);
+      });
+    });
+
+    it('returns word with > 6 letters when tied for score', function() {
+      var words = [
+        'grapes',
+        'bananas'
+      ];
+      var wordOverSixLetters = _.find(words, function(word) {
+        return word.length > 6;
+      });
+
+      _.each([words, _.reverse(words)], function(words) {
+        expect(Scrabble.highestScoreFrom(words)).toEqual(wordOverSixLetters);
       });
     });
   });

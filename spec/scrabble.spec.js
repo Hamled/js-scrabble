@@ -156,5 +156,21 @@ describe('Scrabble', function() {
 
       expectHighestScore(words, wordOverSixLetters);
     });
+
+    it('returns first word when tied for score & length', function() {
+      var words = [
+        'grapes',
+        'fruits'
+      ];
+      var scores = _.map(words, Scrabble.score);
+
+      // Sanity checks that above words all have same score & length
+      expect(_.uniq(scores).length).toEqual(1);
+      expect(_.uniq(_.map(words, 'length')).length).toEqual(1);
+
+      _.each([words, _.reverse(words)], function(words) {
+        expect(Scrabble.highestScoreFrom(words)).toEqual(_.first(words));
+      });
+    });
   });
 });

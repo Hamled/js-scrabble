@@ -112,6 +112,12 @@ describe('Scrabble', function() {
       expect(words).toContain(maxWord);
     });
 
+    var expectHighestScore = function(words, expectedWord) {
+      _.each([words, _.reverse(words)], function(words) {
+        expect(Scrabble.highestScoreFrom(words)).toEqual(expectedWord);
+      });
+    };
+
     it('returns highest scoring word when no ties', function() {
       var words = [
         'fruits',
@@ -126,9 +132,7 @@ describe('Scrabble', function() {
       expect(_.uniq(scores)).toEqual(scores); // above words all have different scores
       expect(maxWord).not.toBeUndefined();
 
-      _.each([words, _.reverse(words)], function(words) {
-        expect(Scrabble.highestScoreFrom(words)).toEqual(maxWord);
-      });
+      expectHighestScore(words, maxWord);
     });
 
     it('returns shorter word when highest scoring words tie', function() {
@@ -138,9 +142,7 @@ describe('Scrabble', function() {
       ];
       var shortestWord = _.minBy(words, 'length');
 
-      _.each([words, _.reverse(words)], function(words) {
-        expect(Scrabble.highestScoreFrom(words)).toEqual(shortestWord);
-      });
+      expectHighestScore(words, shortestWord);
     });
 
     it('returns word with > 6 letters when tied for score', function() {
@@ -152,9 +154,7 @@ describe('Scrabble', function() {
         return word.length > 6;
       });
 
-      _.each([words, _.reverse(words)], function(words) {
-        expect(Scrabble.highestScoreFrom(words)).toEqual(wordOverSixLetters);
-      });
+      expectHighestScore(words, wordOverSixLetters);
     });
   });
 });

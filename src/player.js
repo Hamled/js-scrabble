@@ -17,6 +17,8 @@ Player.prototype.play = function(word) {
   if(_.isEmpty(word)) {
     throw new Error('play must be called with a non-empty string');
   }
+
+  this.plays.push(word);
 };
 
 export default Player;

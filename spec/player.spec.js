@@ -28,6 +28,15 @@ describe('Player', function() {
       expect(player.plays).toBeArray();
       expect(player.plays).toBeEmptyArray();
     });
+
+    it('increases in size by 1 when you play a new word', function() {
+      var player = new Player('Player 1');
+      var playsLength = player.plays.length;
+
+      player.play('word');
+
+      expect(player.plays.length).toEqual(playsLength + 1);
+    });
   });
 
   describe('#play', function() {

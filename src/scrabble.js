@@ -40,6 +40,9 @@ Scrabble.score = function(word) {
 };
 
 Scrabble.highestScoreFrom = function(words) {
+  if(!_.isArray(words)) {
+    throw new Error('highestScoreFrom must be called with an array argument');
+  }
 };
 
 export default Scrabble;

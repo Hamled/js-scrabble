@@ -87,5 +87,13 @@ describe('Scrabble', function() {
     it('can be called', function() {
       expect(_.isFunction(Scrabble.highestScoreFrom)).toBeTruthy();
     });
+
+    it('throws an Error for no or non-array argument', function() {
+      _.each([[], [undefined], [''], [0], [false]], function(args) {
+        expect(function() {
+          return Scrabble.highestScoreFrom.apply(undefined, args);
+        }).toThrowError(Error, "highestScoreFrom must be called with an array argument");
+      });
+    });
   });
 });

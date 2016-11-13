@@ -130,5 +130,18 @@ describe('Scrabble', function() {
         expect(Scrabble.highestScoreFrom(words)).toEqual(maxWord);
       });
     });
+
+    it('returns shorter word when highest scoring words tie', function() {
+      var words = [
+        'grape',
+        'banana'
+      ];
+      var shortestWord = _.minBy(words, 'length');
+
+      _.each([words, _.reverse(words)], function(words) {
+
+        expect(Scrabble.highestScoreFrom(words)).toEqual(shortestWord);
+      });
+    });
   });
 });

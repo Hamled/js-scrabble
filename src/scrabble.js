@@ -47,14 +47,12 @@ Scrabble.highestScoreFrom = function(words) {
   const scoredWords = _.map(words, function(word) {
     return {
       word: word,
+      length: word.length,
       score: Scrabble.score(word)
     };
   });
 
-  var maxScoredWord = _.last(_.sortBy(scoredWords, function(scoredWord) {
-    return scoredWord.score;
-  }));
-
+  const maxScoredWord = _.first(_.orderBy(scoredWords, ['score', 'length'], ['desc', 'asc']));
   if(maxScoredWord !== undefined) {
     return maxScoredWord.word;
   } else {

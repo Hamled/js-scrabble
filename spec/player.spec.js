@@ -36,5 +36,15 @@ describe('Player', function() {
 
       expect(player.play).toBeFunction();
     });
+
+    it('throws an Error for no or non-string argument', function() {
+      var player = new Player('Player 1');
+
+      _.each([[], [undefined], [[]], [0], [false]], function(args) {
+        expect(function() {
+          return player.play.apply(player, args);
+        }).toThrowError(Error, 'play must be called with a string argument');
+      });
+    });
   });
 });

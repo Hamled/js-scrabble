@@ -37,6 +37,21 @@ describe('Player', function() {
 
       expect(player.plays.length).toEqual(playsLength + 1);
     });
+
+    it('includes newly played words at end of array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'strawberry',
+        'cherry',
+        'bilberry'
+      ];
+
+      _.each(words, function(word) {
+        player.play(word);
+
+        expect(_.last(player.plays)).toEqual(word);
+      });
+    });
   });
 
   describe('#play', function() {

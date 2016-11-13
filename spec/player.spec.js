@@ -12,5 +12,12 @@ describe('Player', function() {
         return new Player();
       }).toThrowError(Error, 'Player must be given a name');
     });
+
+    it('sets the player name', function() {
+      var name = 'Player 1';
+      var player = new Player(name);
+
+      expect(player.name).toEqual(name);
+    });
   });
 });

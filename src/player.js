@@ -21,4 +21,7 @@ Player.prototype.play = function(word) {
   this.plays.push(word);
 };
 
+Player.prototype.totalScore = function() {
+};
+
 export default Player;

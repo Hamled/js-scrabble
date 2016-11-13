@@ -98,4 +98,12 @@ describe('Player', function() {
       }).toThrowError(Error, 'play must be called with a non-empty string');
     });
   });
+
+  describe('#totalScore', function() {
+    it('can be called', function() {
+      var player = new Player('Player 1');
+
+      expect(player.totalScore).toBeFunction();
+    });
+  });
 });

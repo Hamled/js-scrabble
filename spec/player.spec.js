@@ -20,4 +20,13 @@ describe('Player', function() {
       expect(player.name).toEqual(name);
     });
   });
+
+  describe('#plays', function() {
+    it('starts as an empty array', function() {
+      var player = new Player('Player 1');
+
+      expect(player.plays).toBeArray();
+      expect(player.plays).toBeEmptyArray();
+    });
+  });
 });

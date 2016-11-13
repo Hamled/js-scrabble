@@ -95,5 +95,9 @@ describe('Scrabble', function() {
         }).toThrowError(Error, "highestScoreFrom must be called with an array argument");
       });
     });
+
+    it('returns undefined for empty array', function() {
+      expect(Scrabble.highestScoreFrom([])).toBeUndefined();
+    });
   });
 });

@@ -39,4 +39,7 @@ Scrabble.score = function(word) {
   }
 };
 
+Scrabble.highestScoreFrom = function(words) {
+};
+
 export default Scrabble;

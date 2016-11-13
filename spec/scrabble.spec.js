@@ -84,4 +84,12 @@ describe('Scrabble', function() {
       expect(Scrabble.score(word + suffix)).toEqual(wordScore + suffixScore + 50);
     });
   });
+
+  describe('.highestScoreFrom', function() {
+    it('can be called', function() {
+      expect(function() {
+        return Scrabble.highestScoreFrom();
+      }).not.toThrow();
+    });
+  });
 });

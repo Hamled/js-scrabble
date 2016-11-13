@@ -22,9 +22,7 @@ describe('Scrabble', function() {
 
   describe('.score', function() {
     it('can be called', function() {
-      expect(function() {
-        Scrabble.score();
-      }).not.toThrow();
+      expect(_.isFunction(Scrabble.score)).toBeTruthy();
     });
 
     it('returns undefined for empty arguments', function() {
@@ -87,9 +85,7 @@ describe('Scrabble', function() {
 
   describe('.highestScoreFrom', function() {
     it('can be called', function() {
-      expect(function() {
-        return Scrabble.highestScoreFrom();
-      }).not.toThrow();
+      expect(_.isFunction(Scrabble.highestScoreFrom)).toBeTruthy();
     });
   });
 });

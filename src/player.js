@@ -13,6 +13,10 @@ Player.prototype.play = function(word) {
   if(!_.isString(word)) {
     throw new Error('play must be called with a string argument');
   }
+
+  if(_.isEmpty(word)) {
+    throw new Error('play must be called with a non-empty string');
+  }
 };
 
 export default Player;

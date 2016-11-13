@@ -46,5 +46,13 @@ describe('Player', function() {
         }).toThrowError(Error, 'play must be called with a string argument');
       });
     });
+
+    it('throws an Error when given empty string', function() {
+      var player = new Player('Player 1');
+
+      expect(function() {
+        return player.play('');
+      }).toThrowError(Error, 'play must be called with a non-empty string');
+    });
   });
 });

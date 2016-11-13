@@ -52,6 +52,25 @@ describe('Player', function() {
         expect(_.last(player.plays)).toEqual(word);
       });
     });
+
+    it('allows duplicate played words', function() {
+      var player = new Player('Player 1');
+      var word = 'blueberry';
+
+      // Play the word at least once
+      player.play(word);
+      var oldWordCount = _.filter(player.plays, function(playedWord) {
+        return playedWord === word;
+      }).length;
+
+      // Play it again, sam
+      player.play(word);
+      var newWordCount = _.filter(player.plays, function(playedWord) {
+        return playedWord === word;
+      }).length;
+
+      expect(newWordCount).toEqual(oldWordCount + 1);
+    });
   });
 
   describe('#play', function() {

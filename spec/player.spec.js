@@ -286,5 +286,20 @@ describe('Player', function() {
 
       expect(player.highestWordScore()).toBeUndefined();
     });
+
+    it('returns highest score from #plays array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'cranberry',
+        'crowberry',
+        'cloudberry'
+      ];
+      var highestScore = _.max(_.map(words, Scrabble.score));
+
+      // Play all the words
+      _.each(words, _.bind(player.play, player));
+
+      expect(player.highestWordScore()).toEqual(highestScore);
+    });
   });
 });

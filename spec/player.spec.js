@@ -135,4 +135,12 @@ describe('Player', function() {
       expect(player.totalScore()).toEqual(oldTotalScore + newWordScore);
     });
   });
+
+  describe('#hasWon', function() {
+    it('can be called', function() {
+      var player = new Player('Player 1');
+
+      expect(player.hasWon).toBeFunction();
+    });
+  });
 });

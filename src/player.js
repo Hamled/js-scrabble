@@ -26,4 +26,7 @@ Player.prototype.totalScore = function() {
   return _.sum(_.map(this.plays, Scrabble.score));
 };
 
+Player.prototype.hasWon = function() {
+};
+
 export default Player;

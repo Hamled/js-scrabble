@@ -142,5 +142,27 @@ describe('Player', function() {
 
       expect(player.hasWon).toBeFunction();
     });
+
+    it('returns false when #totalScore <= 100', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'buffaloberry',
+        'kiwi',
+        'lychee'
+      ];
+      // Sanity check
+      var totalScore = _.sum(_.map(words, Scrabble.score));
+      expect(totalScore).toEqual(100);
+
+      // Play all but the last word
+      _.each(_.initial(words), _.bind(player.play, player));
+
+      expect(player.hasWon()).toEqual(false);
+
+      // Play the last word too
+      player.play(_.last(words));
+
+      expect(player.hasWon()).toEqual(false);
+    });
   });
 });

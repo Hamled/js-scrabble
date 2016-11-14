@@ -27,6 +27,7 @@ Player.prototype.totalScore = function() {
 };
 
 Player.prototype.hasWon = function() {
+  return this.totalScore() > 100;
 };
 
 export default Player;

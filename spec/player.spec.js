@@ -219,5 +219,34 @@ describe('Player', function() {
 
       expect(player.highestScoringWord()).toBeUndefined();
     });
+
+    it('returns first word w/ highest score from #plays array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'boysenberry',
+        'bearberry',
+        'barberry'
+      ];
+      var highestScoringWord = _.maxBy(words, Scrabble.score);
+
+      // Play all of the words
+      _.each(words, _.bind(player.play, player));
+
+      expect(player.highestScoringWord()).toEqual(highestScoringWord);
+    });
+
+    it('returns a word that is within #plays array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'boysenberry',
+        'bearberry',
+        'barberry'
+      ];
+
+      // Play all of the words
+      _.each(words, _.bind(player.play, player));
+
+      expect(player.plays).toContain(player.highestScoringWord());
+    });
   });
 });

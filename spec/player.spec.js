@@ -280,5 +280,11 @@ describe('Player', function() {
 
       expect(player.highestWordScore).toBeFunction();
     });
+
+    it('returns undefined for no words played', function() {
+      var player = new Player('Player 1');
+
+      expect(player.highestWordScore()).toBeUndefined();
+    });
   });
 });

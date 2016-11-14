@@ -72,6 +72,23 @@ describe('Player', function() {
 
       expect(newWordCount).toEqual(oldWordCount + 1);
     });
+
+    it('returns false if player has already won', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'buffaloberry',
+        'kiwi',
+        'lychee',
+        'acai'
+      ];
+      var word = 'tayberry';
+      _.each(words, _.bind(player.play, player));
+
+      // Sanity check
+      expect(player.hasWon()).toBeTruthy();
+
+      expect(player.play(word)).toEqual(false);
+    });
   });
 
   describe('#play', function() {
@@ -122,7 +139,7 @@ describe('Player', function() {
     it('returns correct sum after additional word is played', function() {
       var player = new Player('Player 1');
       var words = [
-        'gooseberry',
+        'acai',
         'raspberry'
       ];
       _.each(words, _.bind(player.play, player));
@@ -253,7 +270,7 @@ describe('Player', function() {
       var player = new Player('Player 1');
       var words = [
         'bearberry',
-        'barberry'
+        'cherry'
       ];
       var bestWord = 'boysenberry';
       // Sanity check
@@ -321,7 +338,7 @@ describe('Player', function() {
       var player = new Player('Player 1');
       var words = [
         'cranberry',
-        'cloudberry'
+        'guava'
       ];
       var bestWord = 'crowberry';
 

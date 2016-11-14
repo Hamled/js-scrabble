@@ -118,5 +118,21 @@ describe('Player', function() {
 
       expect(player.totalScore()).toEqual(totalScore);
     });
+
+    it('returns correct sum after additional word is played', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'gooseberry',
+        'raspberry'
+      ];
+      _.each(words, _.bind(player.play, player));
+      var oldTotalScore = player.totalScore();
+
+      var newWord = 'dewberry';
+      var newWordScore = Scrabble.score(newWord);
+      player.play(newWord);
+
+      expect(player.totalScore()).toEqual(oldTotalScore + newWordScore);
+    });
   });
 });

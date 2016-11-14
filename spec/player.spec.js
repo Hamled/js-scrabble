@@ -248,5 +248,29 @@ describe('Player', function() {
 
       expect(player.plays).toContain(player.highestScoringWord());
     });
+
+    it('returns correct word after new highest scoring word is played', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'bearberry',
+        'barberry'
+      ];
+      var bestWord = 'boysenberry';
+      // Sanity check
+      _.each(words, function(word) {
+        expect(Scrabble.score(bestWord)).toBeGreaterThan(Scrabble.score(word));
+      });
+
+      // Play all of the original words
+      _.each(words, _.bind(player.play, player));
+      var oldHighestScoringWord = player.highestScoringWord();
+
+      // Play the new word
+      player.play(bestWord);
+      var newHighestScoringWord = player.highestScoringWord();
+
+      expect(newHighestScoringWord).not.toEqual(oldHighestScoringWord);
+      expect(newHighestScoringWord).toEqual(bestWord);
+    });
   });
 });

@@ -213,5 +213,11 @@ describe('Player', function() {
 
       expect(player.highestScoringWord).toBeFunction();
     });
+
+    it('returns undefined when no wored have been played', function() {
+      var player = new Player('Player 1');
+
+      expect(player.highestScoringWord()).toBeUndefined();
+    });
   });
 });

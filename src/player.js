@@ -34,4 +34,7 @@ Player.prototype.highestScoringWord = function() {
   return Scrabble.highestScoreFrom(this.plays);
 };
 
+Player.prototype.highestWordScore = function() {
+};
+
 export default Player;

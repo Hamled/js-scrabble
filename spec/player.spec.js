@@ -273,4 +273,12 @@ describe('Player', function() {
       expect(newHighestScoringWord).toEqual(bestWord);
     });
   });
+
+  describe('#highestWordScore', function() {
+    it('can be called', function() {
+      var player = new Player('Player 1');
+
+      expect(player.highestWordScore).toBeFunction();
+    });
+  });
 });

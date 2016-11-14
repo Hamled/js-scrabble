@@ -89,6 +89,27 @@ describe('Player', function() {
 
       expect(player.play(word)).toEqual(false);
     });
+
+    it('doesn\'t add to #plays array if player has already won', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'buffaloberry',
+        'kiwi',
+        'lychee',
+        'acai'
+      ];
+      var word = 'gooseberry';
+      _.each(words, _.bind(player.play, player));
+
+      // Sanity check
+      expect(player.hasWon()).toBeTruthy();
+
+      var oldPlaysLength = player.plays.length;
+      player.play(word);
+      var newPlaysLength = player.plays.length;
+
+      expect(newPlaysLength).toEqual(oldPlaysLength);
+    });
   });
 
   describe('#play', function() {

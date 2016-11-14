@@ -301,5 +301,20 @@ describe('Player', function() {
 
       expect(player.highestWordScore()).toEqual(highestScore);
     });
+
+    it('returns a score matching the score of a word within #plays array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'cranberry',
+        'crowberry',
+        'cloudberry'
+      ];
+      var scores = _.map(words, Scrabble.score);
+
+      // Play all the words
+      _.each(words, _.bind(player.play, player));
+
+      expect(scores).toContain(player.highestWordScore());
+    });
   });
 });

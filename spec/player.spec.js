@@ -206,4 +206,12 @@ describe('Player', function() {
       expect(newHasWon).not.toEqual(oldHasWon);
     });
   });
+
+  describe('#highestScoringWord', function() {
+    it('can be called', function() {
+      var player = new Player('Player 1');
+
+      expect(player.highestScoringWord).toBeFunction();
+    });
+  });
 });

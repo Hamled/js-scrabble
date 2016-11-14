@@ -30,4 +30,7 @@ Player.prototype.hasWon = function() {
   return this.totalScore() > 100;
 };
 
+Player.prototype.highestScoringWord = function() {
+};
+
 export default Player;

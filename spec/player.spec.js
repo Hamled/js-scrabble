@@ -182,5 +182,28 @@ describe('Player', function() {
 
       expect(player.hasWon()).toEqual(true);
     });
+
+    it('return value changes after winning word is played', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'buffaloberry',
+        'kiwi',
+        'lychee',
+        'acai'
+      ];
+      // Sanity check
+      var totalScore = _.sum(_.map(words, Scrabble.score));
+      expect(totalScore).toBeGreaterThan(100);
+
+      // Play all but the last word
+      _.each(_.initial(words), _.bind(player.play, player));
+      var oldHasWon = player.hasWon();
+
+      // Play the last word too
+      player.play(_.last(words));
+      var newHasWon = player.hasWon();
+
+      expect(newHasWon).not.toEqual(oldHasWon);
+    });
   });
 });

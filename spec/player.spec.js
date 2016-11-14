@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import Player from 'player';
+import Scrabble from 'scrabble';
 
 describe('Player', function() {
   describe('.constructor', function() {
@@ -104,6 +105,18 @@ describe('Player', function() {
       var player = new Player('Player 1');
 
       expect(player.totalScore).toBeFunction();
+    });
+
+    it('returns the sum of the scores for entire #plays array', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'elderberry',
+        'mulberry'
+      ];
+      var totalScore = _.sum(_.map(words, Scrabble.score));
+      _.each(words, _.bind(player.play, player));
+
+      expect(player.totalScore()).toEqual(totalScore);
     });
   });
 });

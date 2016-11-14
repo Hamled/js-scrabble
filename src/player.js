@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Scrabble from 'scrabble';
 
 var Player = function(name) {
   if(name === undefined) {
@@ -22,6 +23,7 @@ Player.prototype.play = function(word) {
 };
 
 Player.prototype.totalScore = function() {
+  return _.sum(_.map(this.plays, Scrabble.score));
 };
 
 export default Player;

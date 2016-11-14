@@ -316,5 +316,25 @@ describe('Player', function() {
 
       expect(scores).toContain(player.highestWordScore());
     });
+
+    it('returns new highest score when new best word is played', function() {
+      var player = new Player('Player 1');
+      var words = [
+        'cranberry',
+        'cloudberry'
+      ];
+      var bestWord = 'crowberry';
+
+      // Play all the words
+      _.each(words, _.bind(player.play, player));
+      var oldHighestWordScore = player.highestWordScore();
+
+      // Play the new best word
+      player.play(bestWord);
+      var newHighestWordScore = player.highestWordScore();
+
+      expect(newHighestWordScore).not.toEqual(oldHighestWordScore);
+      expect(newHighestWordScore).toEqual(Scrabble.score(bestWord));
+    });
   });
 });
